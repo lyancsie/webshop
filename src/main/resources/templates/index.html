@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>My Shop</h1>
+<table>
+    <tr>
+        <td><input type="submit" name="available" value="AVAILABLE" onclick="location.href='/available'"></td>
+        <td><input type="submit" name="cheapest" value="CHEAPEST" onclick="location.href='/cheapest'"></td>
+        <td><input type="submit" name="average" value="AVERAGE" onclick="location.href='/average'"></td>
+        <td><input type="submit" name="contains" value="CONTAINS" onclick="location.href='/contains'"></td>
+        <td><input type="submit" name="mostexpensive" value="MOST EXPENSIVE" onclick="location.href='/mostexpensive'">
+        </td>
+    </tr>
+    <tr>
+        <form th:method="get" th:action="@{/search}">
+            <input type="text" placeholder="Write here..." name="item">
+            <input type="submit" value="SEARCH">
+        </form>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+</table>
+<table>
+    <thead>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${items}" th:object="${item}">
+        <td th:text="*{name}"></td>
+        <td th:text="*{description}"></td>
+        <td th:text="*{price}"></td>
+        <td th:text="*{quantity}"></td>
+    </tr>
+    <tr>
+        <td th:text="${average}"></td>
+    </tr>
+
+    </tbody>
+</table>
+</body>
+</html>
