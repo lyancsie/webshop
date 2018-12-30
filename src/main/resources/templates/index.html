@@ -39,7 +39,7 @@
         <td th:text="*{quantity}"></td>
     </tr>
     <tr>
-        <td th:text="${average}"></td>
+        <td><span th:text="${#numbers.formatDecimal(average, 0,2)}">10.00</span></td>
     </tr>
 
     </tbody>
